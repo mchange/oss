@@ -44,15 +44,18 @@ public class BlockManager {
      * @param uuid 小文件uuid
      * @return
      */
-    public Block read(String uuid) throws IOException {
+    public Block read(String uuid) {
+        try {
+            // 1. 根据uuid找到对应的索引
+            BlockIndex index = blockIndexManager.getBlockIndex(uuid);
 
-        // 1. 根据uuid找到对应的索引
-        BlockIndex index = blockIndexManager.getBlockIndex(uuid);
-
-        // 2. 根据索引读取文件内容
-        byte[] data = blockReader.readBlock(blockTools.getBlockFile(uuid), index);
-
-        return new Block(data, index);
+            // 2. 根据索引读取文件内容
+            byte[] data = blockReader.readBlock(blockTools.getBlockFile(uuid), index);
+            return new Block(data, index);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

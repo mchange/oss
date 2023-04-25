@@ -32,7 +32,12 @@ public class OssController {
         long start = System.currentTimeMillis();
         Block block = blockManager.read(uuid);
         long end = System.currentTimeMillis();
-        log.info("获取文件耗时：{} 秒", ((end-start)/1000));
+        log.info("获取文件耗时：{} 毫秒", (end-start));
+        if(null == block){
+            log.error("未获取到文件：{}， 请确认文件是否存在", uuid);
+            response.sendError(404);
+            return;
+        }
         String fileName = block.getIndex().getName();
         byte[] data = block.getData();
         //get the mimetype

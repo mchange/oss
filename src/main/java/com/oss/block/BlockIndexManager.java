@@ -45,7 +45,7 @@ public class BlockIndexManager {
             reload(i);
         }
         long end = System.currentTimeMillis();
-        log.info("加载索引文件耗时 {} 秒", ((end-start)/1000));
+        log.info("加载索引文件耗时 {} 毫秒", (end-start));
     }
 
     /**
