@@ -41,7 +41,7 @@ public class BlockWriter {
             long size = smalls.length;
             long start = big.length();
             FileUtils.doAppend(big, smalls);
-            index = new BlockIndex(uuid, start, size, small.getName(), FileUtils.getExtension(small.getName()));
+            index = new BlockIndex(uuid, start, size, small.getName());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

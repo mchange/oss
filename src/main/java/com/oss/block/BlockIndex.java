@@ -9,17 +9,15 @@ public class BlockIndex {
     private long position;
     private long size;
     private String name;
-    private String type;
 
     public BlockIndex() {
     }
 
-    public BlockIndex(String uuid, long position, long size, String name, String type) {
+    public BlockIndex(String uuid, long position, long size, String name) {
         this.uuid = uuid;
         this.position = position;
         this.size = size;
         this.name = name;
-        this.type = type;
     }
 
     public String getUuid() {
@@ -52,14 +50,6 @@ public class BlockIndex {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     @Override
